@@ -167,6 +167,10 @@
     fill: var(--gray-900);
   }
 
+  form {
+    margin: 10%;
+  }
+
   @media screen and (max-width: 650px) {
     .content {
       flex-direction: column;
@@ -221,27 +225,33 @@
         </defs>
       </svg>
       <h1>Hello, Welcome to the Casino!</h1>
-      <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
-    <label for="email">Email:</label>
+      <form (ngSubmit)="onSubmit()" #loginForm="ngForm" class="p-4 rounded shadow bg-light" style="max-width: 400px;">
+  <div class="mb-3">
+    <label for="email" class="form-label">Email address</label>
     <input
       type="email"
       id="email"
       name="email"
       [(ngModel)]="email"
       required
+      class="form-control"
+      placeholder="Enter your email"
     />
-    <br />
-    <label for="password">Password:</label>
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
     <input
       type="password"
       id="password"
       name="password"
       [(ngModel)]="password"
       required
+      class="form-control"
+      placeholder="Enter your password"
     />
-
-    <button type="submit" [disabled]="loginForm.invalid">Submit</button>
-  </form>
+  </div>
+  <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary w-100">Submit</button>
+</form>
     </div>
     
     
