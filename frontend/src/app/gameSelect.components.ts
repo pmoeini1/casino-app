@@ -22,4 +22,7 @@ export class GameSelect {
     toPoker(){
         this.router.navigate(['/poker']);
     }
+    back() {
+        this.router.navigate(['/']);
+    }
 }
