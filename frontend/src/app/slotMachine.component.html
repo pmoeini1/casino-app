@@ -1,8 +1,55 @@
-<h1>Slot Machine</h1>
-<div style="font-size: 2em; margin-bottom: 1em;">
-  {{ slot1 }} - {{ slot2 }} - {{ slot3 }}
-</div>
-<button class="btn btn-success" (click)="spin()">Spin</button>
-<div style="margin-top: 1em; font-size: 1.5em;">
-  {{ result }}
+<style>
+  .slot-machine-container {
+    background: radial-gradient(circle at 50% 30%, #ffd700 0%, #b8860b 100%);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.3);
+    padding: 2em;
+    max-width: 400px;
+    margin: 2em auto;
+    text-align: center;
+  }
+  .slots {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    margin-bottom: 1em;
+  }
+  .slot {
+    background: #fffbe6;
+    border: 3px solid #b8860b;
+    border-radius: 10px;
+    width: 60px;
+    height: 60px;
+    font-size: 2.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+  .result {
+    margin-top: 1em;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #b8860b;
+    text-shadow: 1px 1px 2px #fff;
+  }
+  .btn-success {
+    font-size: 1.2em;
+    padding: 0.5em 2em;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+</style>
+
+<div class="slot-machine-container">
+  <h1 style="color:#b8860b; text-shadow: 2px 2px 4px #fff;">🎰 Slot Machine 🎰</h1>
+  <div class="slots">
+    <div class="slot">{{ slot1 }}</div>
+    <div class="slot">{{ slot2 }}</div>
+    <div class="slot">{{ slot3 }}</div>
+  </div>
+  <button class="btn btn-success" (click)="spin()">Spin</button>
+  <div class="result">
+    {{ result }}
+  </div>
 </div>
