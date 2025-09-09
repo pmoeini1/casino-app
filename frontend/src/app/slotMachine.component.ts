@@ -25,4 +25,7 @@ export class SlotMachine {
         this.result = '😢 You lose!';
         }
     }
+    back() {
+        this.router.navigate(['/gameSelect']);
+    }
 }
