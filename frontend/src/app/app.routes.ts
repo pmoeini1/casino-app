@@ -6,5 +6,5 @@ import { SlotMachine } from './slotMachine.component';
 export const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'gameSelect', component: GameSelect },
-  {path: 'slot', component: SlotMachine},
+  { path: 'slot', component: SlotMachine },
 ];

@@ -1,1 +1,8 @@
 <h1>Slot Machine</h1>
+<div style="font-size: 2em; margin-bottom: 1em;">
+  {{ slot1 }} - {{ slot2 }} - {{ slot3 }}
+</div>
+<button class="btn btn-success" (click)="spin()">Spin</button>
+<div style="margin-top: 1em; font-size: 1.5em;">
+  {{ result }}
+</div>
