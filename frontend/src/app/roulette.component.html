@@ -6,6 +6,16 @@
     color: #fffbe6;
   }
 
+  .gold-box {
+    background: linear-gradient(135deg, #ffd700, #b8860b);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    padding: 2em;
+    max-width: 500px;
+    margin: 0 auto 2em auto;
+    text-align: center;
+  }
+
   h1 {
     text-align: center;
     font-size: 2.5em;
@@ -56,7 +66,6 @@
     border: none;
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     margin-top: 1em;
-    margin-left: 45%;
   }
 
   button.btn-secondary {
@@ -74,56 +83,59 @@
     text-align: center;
     font-size: 1.5em;
     font-weight: bold;
-    color: #b8860b;
+    color: black;
     text-shadow: 1px 1px 2px #fff;
     margin-top: 1em;
   }
 </style>
-<h1>Roulette</h1>
-<form>
-  <label for="bet" style="font-weight:bold;">Choose your bet:</label>
-  <select [(ngModel)]="bet" id="bet" name="bet" class="form-select" style="max-width:200px; margin:1em 0;">
-    <option value="red">Red</option>
-    <option value="black">Black</option>
-    <option disabled>──────────</option>
-    <option value=1>1</option>
-    <option value=2>2</option>
-    <option value=3>3</option>
-    <option value=4>4</option>
-    <option value=5>5</option>
-    <option value=6>6</option>
-    <option value=7>7</option>
-    <option value=8>8</option>
-    <option value=9>9</option>
-    <option value=10>10</option>
-    <option value=11>11</option>
-    <option value=12>12</option>
-    <option value=13>13</option>
-    <option value=14>14</option>
-    <option value=15>15</option>
-    <option value=16>16</option>
-    <option value=17>17</option>
-    <option value=18>18</option>
-    <option value=19>19</option>
-    <option value=20>20</option>
-    <option value=21>21</option>
-    <option value=22>22</option>
-    <option value=23>23</option>
-    <option value=24>24</option>
-    <option value=25>25</option>
-    <option value=26>26</option>
-    <option value=27>27</option>
-    <option value=28>28</option>
-    <option value=29>29</option>
-    <option value=30>30</option>
-    <option value=31>31</option>
-    <option value=32>32</option>
-    <option value=33>33</option>
-    <option value=34>34</option>
-    <option value=35>35</option>
-    <option value=36>36</option>
-  </select>
-</form>
-<button class="btn btn-success" (click)="spinRoulette()">Spin</button>
-<p style="margin-top:1em; font-size:1.2em; font-weight:bold;">{{ message }}</p>
+<div class="gold-box">
+  <h1>Roulette</h1>
+  <form>
+    <label for="bet" style="font-weight:bold;">Choose your bet:</label>
+    <select [(ngModel)]="bet" id="bet" name="bet" class="form-select" style="max-width:200px; margin:1em 0;">
+      <option value="red">Red</option>
+      <option value="black">Black</option>
+      <option disabled>──────────</option>
+      <option value=1>1</option>
+      <option value=2>2</option>
+      <option value=3>3</option>
+      <option value=4>4</option>
+      <option value=5>5</option>
+      <option value=6>6</option>
+      <option value=7>7</option>
+      <option value=8>8</option>
+      <option value=9>9</option>
+      <option value=10>10</option>
+      <option value=11>11</option>
+      <option value=12>12</option>
+      <option value=13>13</option>
+      <option value=14>14</option>
+      <option value=15>15</option>
+      <option value=16>16</option>
+      <option value=17>17</option>
+      <option value=18>18</option>
+      <option value=19>19</option>
+      <option value=20>20</option>
+      <option value=21>21</option>
+      <option value=22>22</option>
+      <option value=23>23</option>
+      <option value=24>24</option>
+      <option value=25>25</option>
+      <option value=26>26</option>
+      <option value=27>27</option>
+      <option value=28>28</option>
+      <option value=29>29</option>
+      <option value=30>30</option>
+      <option value=31>31</option>
+      <option value=32>32</option>
+      <option value=33>33</option>
+      <option value=34>34</option>
+      <option value=35>35</option>
+      <option value=36>36</option>
+    </select>
+  </form>
+  <button class="btn btn-success" (click)="spinRoulette()">Spin</button>
+  <p style="margin-top:1em; font-size:1.2em; font-weight:bold;">{{ message }}</p>
+</div>
+
 <button class="btn btn-secondary w-10" (click)="back()">Go Back</button>
