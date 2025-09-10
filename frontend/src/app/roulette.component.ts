@@ -1,18 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { AsyncPipe, CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Store } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { CounterStateModel } from './state/counter.state';
+import { Increment, Decrement } from './state/counter.actions';
+
 
 @Component({
     selector: 'app-roulette',
     templateUrl: './roulette.component.html',
     standalone: true,
-    imports: [CommonModule, FormsModule]
+    imports: [CommonModule, FormsModule, AsyncPipe]
 })
 export class Roulette {
-  constructor(private router: Router) {};
-  numbers = Array.from({ length: 36 }, (_, i) => i + 1);
-  message: string = 'Place your bet!';
+    private store = inject(Store); 
+    private router = inject(Router); 
+    count$: Observable<number> = this.store.select(
+        (state: { counter: CounterStateModel }) => state.counter.count
+    );
+    message: string = 'Place your bet!';
   bet: number | 'red' | 'black' | null = null;
   isRed(num: number): boolean {
     const redNumbers = [1,3,5,7,9,12,14,16,18,19,21,23,25,27,30,32,34,36];
@@ -27,14 +35,20 @@ export class Roulette {
     this.rouletteNumber = Math.floor(Math.random() * 36); 
     if (this.rouletteNumber === 0) {
         this.message = 'The ball landed on 0. House wins!';
+        this.store.dispatch(new Decrement(1));
+        
     } else if (this.bet === this.rouletteNumber) {
         this.message = `The ball landed on ${this.rouletteNumber}. You win!`;
+        this.store.dispatch(new Increment(35));
     } else if (this.bet === 'red' && this.isRed(this.rouletteNumber)) {
         this.message = `The ball landed on ${this.rouletteNumber} (Red). You win!`;
+        this.store.dispatch(new Increment(2));
     } else if (this.bet === 'black' && !this.isRed(this.rouletteNumber)) {
         this.message = `The ball landed on ${this.rouletteNumber} (Black). You win!`;
+        this.store.dispatch(new Increment(2));
     } else {
         this.message = `The ball landed on ${this.rouletteNumber}. You lose!`;
+        this.store.dispatch(new Decrement(1));
     }
   }
 
