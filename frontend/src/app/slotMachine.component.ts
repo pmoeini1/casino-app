@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Store, Select } from '@ngxs/store';
+import { Store } from '@ngxs/store';
 import { Increment, Decrement } from './state/counter.actions';
 import { CounterStateModel } from './state/counter.state';
 import { AsyncPipe, CommonModule } from '@angular/common';
@@ -10,13 +10,15 @@ import { AsyncPipe, CommonModule } from '@angular/common';
   selector: 'app-slot-machine',
   templateUrl: './slotMachine.component.html',
   standalone: true,
-  imports: [CommonModule, AsyncPipe] // ✅ Include both
+  imports: [CommonModule, AsyncPipe]
 })
 export class SlotMachine {
-  constructor(private store: Store, private router: Router) {}
+  private store = inject(Store); 
+  private router = inject(Router); 
 
-  @Select((state: { counter: CounterStateModel }) => state.counter.count)
-  count$!: Observable<number>;
+  count$: Observable<number> = this.store.select(
+    (state: { counter: CounterStateModel }) => state.counter.count
+  );
 
   slot1: number = 0;
   slot2: number = 0;
