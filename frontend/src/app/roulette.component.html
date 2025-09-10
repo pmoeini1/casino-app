@@ -1,29 +1,42 @@
 <style>
   body {
-    background-color: #1a1a1a;
-    color: rgb(255, 217, 0);
+    background: radial-gradient(circle at 50% 30%, #ffd700 0%, #b8860b 100%);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 2em;
+    color: #fffbe6;
   }
 
   h1 {
-    color: rgb(255, 217, 0);
-    text-shadow: 2px 2px 5px red;
-    font-size: 2.5em;
     text-align: center;
+    font-size: 2.5em;
+    color: #fffbe6;
+    text-shadow: 2px 2px 5px #000;
     margin-bottom: 1em;
   }
 
+  form {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    padding: 2em;
+    max-width: 400px;
+    margin: 0 auto 2em auto;
+    text-align: center;
+  }
+
   label {
-    color: rgb(255, 217, 0);
+    color: #fffbe6;
+    font-weight: bold;
   }
 
   .form-select {
-    background-color: white;
-    color: rgb(255, 217, 0);
-    border: 2px solid red;
+    background-color: #fffbe6;
+    color: #b8860b;
+    border: 3px solid #b8860b;
+    border-radius: 10px;
     padding: 0.5em;
-    border-radius: 5px;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   }
 
   option[value="red"] {
@@ -35,33 +48,35 @@
   }
 
   button.btn-success {
-    background-color: red;
+    background-color: #b8860b;
+    color: #fffbe6;
+    font-size: 1.2em;
+    padding: 0.5em 2em;
+    border-radius: 10px;
     border: none;
-    color: rgb(255, 217, 0);
-    font-weight: bold;
-    padding: 0.6em 1.2em;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgb(255, 217, 0);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    margin-top: 1em;
+    margin-left: 45%;
   }
 
   button.btn-secondary {
-    background-color: black;
-    border: 2px solid rgb(255, 217, 0);
-    color: rgb(255, 217, 0);
-    font-weight: bold;
-    padding: 0.6em 1.2em;
-    border-radius: 5px;
+    background-color: #000;
+    color: #ffd700;
+    font-size: 1em;
+    padding: 0.5em 1.5em;
+    border-radius: 10px;
+    border: 2px solid #ffd700;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     margin-top: 1em;
   }
 
   p {
-    color: rgb(255, 217, 0);
     text-align: center;
-    background-color: #2c2c2c;
-    padding: 1em;
-    border-radius: 10px;
-    box-shadow: 0 0 10px red;
-    width: 20%;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #b8860b;
+    text-shadow: 1px 1px 2px #fff;
+    margin-top: 1em;
   }
 </style>
 <h1>Roulette</h1>
