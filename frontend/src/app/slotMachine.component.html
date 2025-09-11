@@ -48,6 +48,19 @@
     <div class="slot">{{ slot2 }}</div>
     <div class="slot">{{ slot3 }}</div>
   </div>
+  <form>
+    <input
+    type="number"
+    [ngModel]="wager"
+    (ngModelChange)="setWager($event)"
+    name="wager"
+    min="1"
+    [max]="count$ | async"
+    class="form-control"
+    style="max-width:100px; margin:0 auto;"
+    />
+  </form>
+  <p>{{ message }}</p>
   <button class="btn btn-success" (click)="spin()">Spin</button>
   <div class="result">
     {{ result }}
