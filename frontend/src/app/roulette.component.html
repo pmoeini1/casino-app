@@ -133,6 +133,16 @@
       <option value=35>35</option>
       <option value=36>36</option>
     </select>
+    <input
+    type="number"
+    [ngModel]="wager"
+    (ngModelChange)="setWager($event)"
+    name="wager"
+    min="1"
+    [max]="count$ | async"
+    class="form-control"
+    style="max-width:100px; margin:0 auto;"
+    />
   </form>
   <button class="btn btn-success" (click)="spinRoulette()">Spin</button>
   <p style="margin-top:1em; font-size:1.2em; font-weight:bold;">{{ message }}</p>
