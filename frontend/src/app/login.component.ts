@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import axios from 'axios';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ export class LoginComponent {
   constructor(private router: Router) {}
 
   onSubmit() {
+
     this.router.navigate(['/gameSelect']);
   }
 }
