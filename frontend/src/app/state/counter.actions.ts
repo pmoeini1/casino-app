@@ -7,3 +7,8 @@ export class Decrement {
   static readonly type = '[Counter] Decrement';
   constructor(public payload: number) {}
 }
+
+export class SetCredits {
+  static readonly type = '[Counter] Set Credits';
+  constructor(public payload: number) {}
+}

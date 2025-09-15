@@ -1,5 +1,5 @@
 import { State, Action, StateContext } from '@ngxs/store';
-import { Increment, Decrement } from './counter.actions'; 
+import { Increment, Decrement, SetCredits } from './counter.actions'; 
 
 export interface CounterStateModel {
   count: number;
@@ -22,5 +22,10 @@ export class CounterState {
   decrement(ctx: StateContext<CounterStateModel>, action: Decrement) {
     const state = ctx.getState();
     ctx.setState({ count: state.count - action.payload });
+  }
+
+  @Action(SetCredits)
+  setCredits(ctx: StateContext<CounterStateModel>, action: SetCredits) {
+    ctx.setState({ count: action.payload });
   }
 }
