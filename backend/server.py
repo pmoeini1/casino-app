@@ -16,13 +16,13 @@ def login():
     data = request.json
     emailString = data['email']
     passwordString = data['password']
-    user = db['login'].find({ 'email': emailString })
-    if len(user) == 0:
+    user = list(db['login'].find({ 'email': emailString }))
+    if len((user)) == 0:
         db['login'].insert_one({ 'email': emailString, 'password': passwordString })
         db['credits'].insert_one({ 'email': emailString, 'credits': 100})
         return jsonify(message='Account created'), 200
     else:
-        if user[0]['password'] != passwordString:
+        if (user)[0]['password'] != passwordString:
             return jsonify(message='Wrong password'), 400
         else:
             return jsonify(message="Successful login"), 200
@@ -32,7 +32,7 @@ def login():
 def getCredits():
     data = request.json
     emailString = data['email']
-    user = db['credits'].find({ 'email': emailString })
+    user = list(db['credits'].find({ 'email': emailString }))
     if (len(user) > 0):
         return jsonify(user[0]['credits']), 200
     else:

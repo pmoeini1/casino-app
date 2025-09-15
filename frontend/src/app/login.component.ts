@@ -16,7 +16,18 @@ export class LoginComponent {
   constructor(private router: Router) {}
 
   onSubmit() {
-
-    this.router.navigate(['/gameSelect']);
+    const body = {
+      email: this.email,
+      password: this.password
+    }
+    axios.post('http://localhost:5000/login', body)
+      .then(response => {
+        console.log('Login successful:', response.data);
+        this.router.navigate(['/gameSelect']);
+      })
+      .catch(error => {
+        alert('Error during login');
+      });
+    
   }
 }
