@@ -6,6 +6,9 @@ import { EmailState } from './state/email.state';
 import { Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import axios from 'axios';
+import { SetEmail } from './state/email.action';
+import { SetCredits } from './state/counter.actions';
+
 
 @Component({
   selector: 'app-login',
@@ -42,16 +45,7 @@ export class LoginComponent {
     axios.post('http://localhost:5000/login', body)
       .then(response => {
         console.log('Login successful:', response.data);
-        this.store.dispatch(new (require('./state/email.action').SetEmail)(this.email));
         // get credits from DB, set in state
-        axios.post('http://localhost:5000/getCredits', { email: this.email })
-        .then(res => {
-            const credits = res.data.credits;
-            this.store.dispatch(new (require('./state/counter.actions').SetCredits)(credits));
-        })
-        .catch(err => {
-            console.error('Error fetching credits:', err);
-        });
         this.router.navigate(['/gameSelect']);
       })
       .catch(error => {
