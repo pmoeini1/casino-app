@@ -43,6 +43,15 @@ export class LoginComponent {
       .then(response => {
         console.log('Login successful:', response.data);
         this.store.dispatch(new (require('./state/email.action').SetEmail)(this.email));
+        // get credits from DB, set in state
+        axios.post('http://localhost:5000/getCredits', { email: this.email })
+        .then(res => {
+            const credits = res.data.credits;
+            this.store.dispatch(new (require('./state/counter.actions').SetCredits)(credits));
+        })
+        .catch(err => {
+            console.error('Error fetching credits:', err);
+        });
         this.router.navigate(['/gameSelect']);
       })
       .catch(error => {
