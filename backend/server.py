@@ -44,9 +44,9 @@ def setCredits():
     data = request.json
     emailString = data['email']
     newCredits = data['credits']
-    user = db['credits'].find({ 'email': emailString })
+    user = list(db['credits'].find({ 'email': emailString }))
     if (len(user)) > 0:
-        db['credits'].update_one({'email': emailString}, {'credits': newCredits}, upsert=True)
+        db['credits'].update_one({'email': emailString}, { '$set': {'credits': newCredits}}, upsert=True)
         return jsonify(message="Credits updated"), 200
     else:
         return jsonify(message='Issue updating credits'), 500
